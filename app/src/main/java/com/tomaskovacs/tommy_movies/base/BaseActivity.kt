@@ -1,4 +1,4 @@
-package com.tomaskovacs.tommy_movies
+package com.tomaskovacs.tommy_movies.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
