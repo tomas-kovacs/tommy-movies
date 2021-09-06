@@ -1,6 +1,6 @@
 package com.tomaskovacs.tommy_movies.data.local
 
-import com.tomaskovacs.tommy_movies.data.model.MovieLocal
+import com.tomaskovacs.tommy_movies.data.local.model.MovieLocal
 
 interface MoviesLocalDataSource {
     suspend fun getMovies(): List<MovieLocal>?

@@ -1,6 +1,6 @@
-package com.tomaskovacs.tommy_movies.domain.entity
+package com.tomaskovacs.tommy_movies.data.local.model
 
-data class Movie(
+data class MovieLocal(
     val id: Int,
     val title: String,
     val backdropPath: String,
