@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+apply from: '../buildsystem/ktlint.gradle'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -18,9 +20,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "API_KEY", "\"1257487a11e463e34756b0bfb7734a2c\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_KEY", "\"1257487a11e463e34756b0bfb7734a2c\""
         }
     }
     compileOptions {
@@ -32,15 +38,17 @@ android {
     }
 }
 
+preBuild.dependsOn ktlint
+
 dependencies {
     implementation project(path: ':domain')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

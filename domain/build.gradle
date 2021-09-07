@@ -3,6 +3,8 @@ plugins {
     id 'kotlin'
 }
 
+apply from: '../buildsystem/ktlint.gradle'
+
 java {
     sourceCompatibility = JavaVersion.VERSION_1_7
     targetCompatibility = JavaVersion.VERSION_1_7
@@ -11,3 +13,9 @@ java {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-XXLanguage:+InlineClasses"]
+    }
+}.dependsOn ktlint
