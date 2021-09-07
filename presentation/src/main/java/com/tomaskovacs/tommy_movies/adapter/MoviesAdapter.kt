@@ -1,10 +1,11 @@
-package com.tomaskovacs.tommy_movies
+package com.tomaskovacs.tommy_movies.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.tomaskovacs.tommy_movies.R
 import com.tomaskovacs.tommy_movies.databinding.ItemMovieBinding
 import com.tomaskovacs.tommy_movies.domain.entity.Movie
 import kotlin.properties.Delegates

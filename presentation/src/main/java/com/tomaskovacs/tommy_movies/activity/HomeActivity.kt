@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.tomaskovacs.tommy_movies.MoviesAdapter
+import com.tomaskovacs.tommy_movies.adapter.MoviesAdapter
 import com.tomaskovacs.tommy_movies.base.BaseActivity
 import com.tomaskovacs.tommy_movies.databinding.ActivityHomeBinding
 import com.tomaskovacs.tommy_movies.domain.entity.Movie
