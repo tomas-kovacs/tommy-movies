@@ -6,9 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tomaskovacs.tommy_movies.domain.entity.Movie
 import com.tomaskovacs.tommy_movies.domain.usecase.GetMoviesUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MoviesViewModel(private val getMoviesUseCase: GetMoviesUseCase) : ViewModel() {
+@HiltViewModel
+class MoviesViewModel @Inject constructor(private val getMoviesUseCase: GetMoviesUseCase) : ViewModel() {
 
     private val _moviesLiveData: MutableLiveData<List<Movie>> by lazy {
         MutableLiveData<List<Movie>>()

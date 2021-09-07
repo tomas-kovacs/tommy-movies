@@ -21,26 +21,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 class DataModule {
 
     @Provides
-    fun providesMoviesRepository(
-        remoteDataSource: MoviesRemoteDataSource,
-        localDataSource: MoviesLocalDataSource
-    ): MoviesRepository {
-        return MoviesRepositoryImpl(remoteDataSource, localDataSource)
-    }
-
-    @Provides
     fun providesMoviesLocalDataSource(): MoviesLocalDataSource {
         return MoviesLocalDataSourceImpl()
     }
 
     @Provides
-    fun providesMoviesRemoteDataSource(api: MoviesApi): MoviesRemoteDataSource {
-        return MoviesRemoteDataSourceImpl(api)
-    }
-
-    @Provides
-    fun providesMoviesApi(retrofit: Retrofit): MoviesApi {
-        return retrofit.create(MoviesApi::class.java)
+    fun providesOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor()).build()
     }
 
     @Provides
@@ -53,8 +40,20 @@ class DataModule {
     }
 
     @Provides
-    fun providesOkHttpClient(): OkHttpClient = HttpLoggingInterceptor().run {
-        level = HttpLoggingInterceptor.Level.BODY
-        OkHttpClient.Builder().addInterceptor(this).build()
+    fun providesMoviesApi(retrofit: Retrofit): MoviesApi {
+        return retrofit.create(MoviesApi::class.java)
+    }
+
+    @Provides
+    fun providesMoviesRemoteDataSource(api: MoviesApi): MoviesRemoteDataSource {
+        return MoviesRemoteDataSourceImpl(api)
+    }
+
+    @Provides
+    fun providesMoviesRepository(
+        remoteDataSource: MoviesRemoteDataSource,
+        localDataSource: MoviesLocalDataSource
+    ): MoviesRepository {
+        return MoviesRepositoryImpl(remoteDataSource, localDataSource)
     }
 }
