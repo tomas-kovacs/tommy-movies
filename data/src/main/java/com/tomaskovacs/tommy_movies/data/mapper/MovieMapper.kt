@@ -7,15 +7,19 @@ import com.tomaskovacs.tommy_movies.domain.entity.Movie
 fun MovieRemote.mapToMovie() = Movie(
     id = id ?: -1,
     title = title ?: "",
-    backdropPath = backdropPath ?: "",
-    releaseDate = releaseDate ?: ""
+    posterPath = posterPath ?: "",
+    releaseDate = releaseDate ?: "",
+    popularity = popularity ?: 0.0,
+    voteAverage = voteAverage ?: 0.0
 )
 
 fun MovieRemote.mapToMovieLocal() = MovieLocal(
     id = id ?: -1,
     title = title ?: "",
-    backdropPath = backdropPath ?: "",
-    releaseDate = releaseDate ?: ""
+    posterPath = posterPath ?: "",
+    releaseDate = releaseDate ?: "",
+    popularity = popularity ?: 0.0,
+    voteAverage = voteAverage ?: 0.0
 )
 
-fun MovieLocal.mapToMovie() = Movie(id, title, backdropPath, releaseDate)
+fun MovieLocal.mapToMovie() = Movie(id, title, posterPath, releaseDate, popularity, voteAverage)

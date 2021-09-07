@@ -41,7 +41,7 @@ class MoviesAdapter(
     inner class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             with(binding) {
-                Glide.with(root.context).load(IMAGE_BASE_URL + movie.backdropPath).into(ivMovieImage)
+                Glide.with(root.context).load(IMAGE_BASE_URL + movie.posterPath).into(ivMovieImage)
                 tvMovieTitle.text = movie.title
                 tvMovieReleaseDate.text = root.context.getString(R.string.movie_release_date, movie.releaseDate)
                 root.setOnClickListener { onMovieClick(movie) }
@@ -50,6 +50,6 @@ class MoviesAdapter(
     }
 
     companion object {
-        private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/"
+        private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original/"
     }
 }

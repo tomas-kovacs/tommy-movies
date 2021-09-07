@@ -9,7 +9,7 @@ import com.tomaskovacs.tommy_movies.data.local.model.MovieLocal
 @Dao
 interface MovieDao {
 
-    @Query("SELECT * FROM $MOVIE_ENTITY")
+    @Query("SELECT * FROM $MOVIE_ENTITY ORDER BY popularity DESC")
     suspend fun getAllMovies(): List<MovieLocal>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

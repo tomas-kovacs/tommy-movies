@@ -9,6 +9,7 @@ import com.tomaskovacs.tommy_movies.adapter.MoviesAdapter
 import com.tomaskovacs.tommy_movies.base.BaseActivity
 import com.tomaskovacs.tommy_movies.databinding.ActivityHomeBinding
 import com.tomaskovacs.tommy_movies.domain.entity.Movie
+import com.tomaskovacs.tommy_movies.hasInternetConnection
 import com.tomaskovacs.tommy_movies.viewmodel.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,7 +27,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getMovies()
+        viewModel.getMovies(hasInternetConnection())
     }
 
     private val moviesObserver = Observer<List<Movie>> { movies ->

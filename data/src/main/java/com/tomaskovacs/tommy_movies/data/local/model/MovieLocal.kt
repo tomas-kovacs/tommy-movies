@@ -8,6 +8,8 @@ import com.tomaskovacs.tommy_movies.data.local.MOVIE_ENTITY
 data class MovieLocal(
     @PrimaryKey val id: Int,
     val title: String,
-    val backdropPath: String,
-    val releaseDate: String
+    val posterPath: String,
+    val releaseDate: String,
+    val popularity: Double,
+    val voteAverage: Double
 )

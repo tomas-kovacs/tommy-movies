@@ -18,8 +18,7 @@ class MoviesViewModel @Inject constructor(private val getMoviesUseCase: GetMovie
     }
     val moviesLiveData: LiveData<List<Movie>> = _moviesLiveData
 
-    fun getMovies() = viewModelScope.launch {
-        // TODO: handle forceUpdate depending on the internet connection
-        _moviesLiveData.value = getMoviesUseCase(true)
+    fun getMovies(hasInternetConnection: Boolean) = viewModelScope.launch {
+        _moviesLiveData.value = getMoviesUseCase(hasInternetConnection)
     }
 }
