@@ -16,7 +16,7 @@ class MoviesRemoteDataSourceImpl(private val api: MoviesApi) : MoviesRemoteDataS
 
     override suspend fun getMovieDetail(movieId: Int): MovieDetailRemote? {
         return try {
-            api.getMovieDetail(BuildConfig.API_KEY, movieId)
+            api.getMovieDetail(movieId, BuildConfig.API_KEY)
         } catch (e: Exception) {
             // TODO: handle exception
             null

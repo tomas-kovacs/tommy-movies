@@ -4,14 +4,13 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.tomaskovacs.tommy_movies.activity.MovieDetailActivity.Companion.EXTRA_MOVIE_ID
 import com.tomaskovacs.tommy_movies.adapter.MoviesAdapter
 import com.tomaskovacs.tommy_movies.base.BaseActivity
 import com.tomaskovacs.tommy_movies.databinding.ActivityHomeBinding
 import com.tomaskovacs.tommy_movies.domain.entity.Movie
-import com.tomaskovacs.tommy_movies.hasInternetConnection
-import com.tomaskovacs.tommy_movies.startActivity
+import com.tomaskovacs.tommy_movies.extension.hasInternetConnection
+import com.tomaskovacs.tommy_movies.extension.startActivity
 import com.tomaskovacs.tommy_movies.viewmodel.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

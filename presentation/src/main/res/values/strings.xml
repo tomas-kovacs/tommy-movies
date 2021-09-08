@@ -2,4 +2,6 @@
     <string name="app_name">tommy-movies</string>
 
     <string name="movie_release_date">Release date: %s</string>
+    <string name="movie_budget">Budget: %s</string>
+    <string name="movie_revenue">Revenue: %s</string>
 </resources>

@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.tomaskovacs.tommy_movies.R
+import com.tomaskovacs.tommy_movies.common.IMAGE_BASE_URL
 import com.tomaskovacs.tommy_movies.databinding.ItemMovieBinding
 import com.tomaskovacs.tommy_movies.domain.entity.Movie
+import com.tomaskovacs.tommy_movies.extension.loadImage
 import kotlin.properties.Delegates
 
 class MoviesAdapter(
@@ -41,15 +42,11 @@ class MoviesAdapter(
     inner class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             with(binding) {
-                Glide.with(root.context).load(IMAGE_BASE_URL + movie.posterPath).into(ivMovieImage)
+                root.context.loadImage(ivMovieImage, IMAGE_BASE_URL + movie.posterPath)
                 tvMovieTitle.text = movie.title
                 tvMovieReleaseDate.text = root.context.getString(R.string.movie_release_date, movie.releaseDate)
                 root.setOnClickListener { onMovieClick(movie) }
             }
         }
-    }
-
-    companion object {
-        private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original/"
     }
 }

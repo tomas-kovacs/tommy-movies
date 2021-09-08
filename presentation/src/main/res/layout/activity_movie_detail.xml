@@ -1,8 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_movie_detail_image"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_movie_detail_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_movie_detail_rating"
+        app:layout_constraintTop_toBottomOf="@id/iv_movie_detail_image"
+        tools:text="Title of the movie"/>
+
+    <TextView
+        android:id="@+id/tv_movie_detail_rating"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginVertical="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_movie_detail_image"
+        tools:text="9.5" />
+
+    <TextView
+        android:id="@+id/tv_movie_detail_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/default_padding"
+        android:paddingVertical="@dimen/small_padding"
+        app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_title"
+        tools:text="Description" />
+
+    <TextView
+        android:id="@+id/tv_movie_detail_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/default_padding"
+        android:paddingVertical="@dimen/small_padding"
+        app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_description"
+        tools:text="Overview" />
+
+    <TextView
+        android:id="@+id/tv_movie_detail_budget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/default_padding"
+        android:paddingVertical="@dimen/small_padding"
+        app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_overview"
+        tools:text="Budget: 50M" />
+
+    <TextView
+        android:id="@+id/tv_movie_detail_revenue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/default_padding"
+        android:paddingVertical="@dimen/small_padding"
+        app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_budget"
+        tools:text="Revenue: 100M" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

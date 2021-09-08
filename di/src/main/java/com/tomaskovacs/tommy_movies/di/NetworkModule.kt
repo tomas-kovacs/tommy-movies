@@ -18,7 +18,9 @@ class NetworkModule {
 
     @Provides
     fun providesOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor()).build()
+        return OkHttpClient.Builder().addInterceptor(
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        ).build()
     }
 
     @Provides
