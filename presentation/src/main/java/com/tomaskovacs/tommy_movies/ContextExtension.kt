@@ -1,8 +1,13 @@
 package com.tomaskovacs.tommy_movies
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+
+inline fun <reified T> Context.startActivity(extras: Intent.() -> Unit = {}) {
+    startActivity(Intent(this, T::class.java).apply(extras))
+}
 
 @Suppress("DEPRECATION")
 fun Context.hasInternetConnection(): Boolean {

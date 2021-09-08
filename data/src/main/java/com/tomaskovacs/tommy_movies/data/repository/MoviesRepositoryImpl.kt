@@ -2,9 +2,11 @@ package com.tomaskovacs.tommy_movies.data.repository
 
 import com.tomaskovacs.tommy_movies.data.local.MoviesLocalDataSource
 import com.tomaskovacs.tommy_movies.data.mapper.mapToMovie
+import com.tomaskovacs.tommy_movies.data.mapper.mapToMovieDetail
 import com.tomaskovacs.tommy_movies.data.mapper.mapToMovieLocal
 import com.tomaskovacs.tommy_movies.data.remote.MoviesRemoteDataSource
 import com.tomaskovacs.tommy_movies.domain.entity.Movie
+import com.tomaskovacs.tommy_movies.domain.entity.MovieDetail
 import com.tomaskovacs.tommy_movies.domain.repository.MoviesRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +23,10 @@ class MoviesRepositoryImpl(
             getMoviesRemote()
         else
             getMoviesLocal()
+    }
+
+    override suspend fun getMovieDetail(movieId: Int): MovieDetail? = withContext(coroutineDispatcher) {
+        remoteDataSource.getMovieDetail(movieId)?.mapToMovieDetail()
     }
 
     private suspend fun getMoviesLocal(): List<Movie> = localDataSource.getMovies()?.map { movieLocal ->

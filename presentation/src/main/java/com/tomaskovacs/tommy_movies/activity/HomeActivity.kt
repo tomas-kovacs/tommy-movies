@@ -5,11 +5,13 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.tomaskovacs.tommy_movies.activity.MovieDetailActivity.Companion.EXTRA_MOVIE_ID
 import com.tomaskovacs.tommy_movies.adapter.MoviesAdapter
 import com.tomaskovacs.tommy_movies.base.BaseActivity
 import com.tomaskovacs.tommy_movies.databinding.ActivityHomeBinding
 import com.tomaskovacs.tommy_movies.domain.entity.Movie
 import com.tomaskovacs.tommy_movies.hasInternetConnection
+import com.tomaskovacs.tommy_movies.startActivity
 import com.tomaskovacs.tommy_movies.viewmodel.MoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,8 +45,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     }
 
     private fun onMovieClick(movie: Movie) {
-        // Remove the snack and instead go to the movie detail (sending the movie id)
-        Snackbar.make(binding.root, movie.title, Snackbar.LENGTH_SHORT).show()
+        // TODO: CONTINUE FROM HERE in a separate branch
+        startActivity<MovieDetailActivity> {
+            putExtra(EXTRA_MOVIE_ID, movie.id)
+        }
     }
 
     override fun getBindingClass(): ActivityHomeBinding = ActivityHomeBinding.inflate(layoutInflater)
