@@ -5,9 +5,9 @@ import com.tomaskovacs.tommy_movies.data.remote.model.MovieDetailRemote
 import com.tomaskovacs.tommy_movies.data.remote.model.MovieRemote
 
 class MoviesRemoteDataSourceImpl(private val api: MoviesApi) : MoviesRemoteDataSource {
-    override suspend fun getMovies(): List<MovieRemote>? {
+    override suspend fun getMovies(category: String): List<MovieRemote>? {
         return try {
-            api.getPopularMovies(BuildConfig.API_KEY).results
+            api.getPopularMovies(category, BuildConfig.API_KEY).results
         } catch (e: Exception) {
             // TODO: handle exception
             null

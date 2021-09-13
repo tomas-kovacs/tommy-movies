@@ -18,26 +18,26 @@ class MoviesRepositoryImpl(
     private val coroutineDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MoviesRepository {
 
-    override suspend fun getMovies(forceUpdate: Boolean): List<Movie> = withContext(coroutineDispatcher) {
+    override suspend fun getMovies(forceUpdate: Boolean, category: String): List<Movie> = withContext(coroutineDispatcher) {
         if (forceUpdate)
-            getMoviesRemote()
+            getMoviesRemote(category)
         else
-            getMoviesLocal()
+            getMoviesLocal(category)
     }
 
     override suspend fun getMovieDetail(movieId: Int): MovieDetail? = withContext(coroutineDispatcher) {
         remoteDataSource.getMovieDetail(movieId)?.mapToMovieDetail()
     }
 
-    private suspend fun getMoviesLocal(): List<Movie> = localDataSource.getMovies()?.map { movieLocal ->
+    private suspend fun getMoviesLocal(category: String): List<Movie> = localDataSource.getMovies(category)?.map { movieLocal ->
         movieLocal.mapToMovie()
     } ?: emptyList()
 
-    private suspend fun getMoviesRemote(): List<Movie> {
-        val remoteMovies = remoteDataSource.getMovies()
+    private suspend fun getMoviesRemote(category: String): List<Movie> {
+        val remoteMovies = remoteDataSource.getMovies(category)
         remoteMovies?.run {
             if (this.isNotEmpty())
-                localDataSource.saveMovies(this.map { movieRemote -> movieRemote.mapToMovieLocal() })
+                localDataSource.saveMovies(this.map { movieRemote -> movieRemote.mapToMovieLocal(category) })
         }
 
         return remoteMovies?.map { movieRemote -> movieRemote.mapToMovie() } ?: emptyList()

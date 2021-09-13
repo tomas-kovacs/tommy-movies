@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tomaskovacs.tommy_movies.R
 import com.tomaskovacs.tommy_movies.activity.MovieDetailActivity.Companion.EXTRA_MOVIE_ID
 import com.tomaskovacs.tommy_movies.adapter.MoviesAdapter
 import com.tomaskovacs.tommy_movies.base.BaseActivity
@@ -23,12 +24,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initMoviesList()
+        observeChips()
         viewModel.moviesLiveData.observe(this, moviesObserver)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getMovies(hasInternetConnection())
+        viewModel.onCategorySelected(hasInternetConnection(), R.id.chip_home_popular)
     }
 
     private val moviesObserver = Observer<List<Movie>> { movies ->
@@ -44,9 +42,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     }
 
     private fun onMovieClick(movie: Movie) {
-        // TODO: CONTINUE FROM HERE in a separate branch
         startActivity<MovieDetailActivity> {
             putExtra(EXTRA_MOVIE_ID, movie.id)
+        }
+    }
+
+    private fun observeChips() {
+        binding.cgHomeCategories.setOnCheckedChangeListener { _, checkedId ->
+            binding.rvHomeMovies.smoothScrollToPosition(0)
+            viewModel.onCategorySelected(hasInternetConnection(), checkedId)
         }
     }
 

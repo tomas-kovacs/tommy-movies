@@ -11,5 +11,6 @@ data class MovieLocal(
     val posterPath: String,
     val releaseDate: String,
     val popularity: Double,
-    val voteAverage: Double
+    val voteAverage: Double,
+    val category: String
 )

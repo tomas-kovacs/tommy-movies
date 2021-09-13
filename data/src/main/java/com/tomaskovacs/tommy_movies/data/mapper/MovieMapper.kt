@@ -15,13 +15,14 @@ fun MovieRemote.mapToMovie() = Movie(
     voteAverage = voteAverage ?: 0.0
 )
 
-fun MovieRemote.mapToMovieLocal() = MovieLocal(
+fun MovieRemote.mapToMovieLocal(category: String) = MovieLocal(
     id = id ?: -1,
     title = title ?: "",
     posterPath = posterPath ?: "",
     releaseDate = releaseDate ?: "",
     popularity = popularity ?: 0.0,
-    voteAverage = voteAverage ?: 0.0
+    voteAverage = voteAverage ?: 0.0,
+    category = category
 )
 
 fun MovieLocal.mapToMovie() = Movie(id, title, posterPath, releaseDate, popularity, voteAverage)
