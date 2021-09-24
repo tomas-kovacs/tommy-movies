@@ -30,8 +30,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         viewModel.getMovies(hasInternetConnection())
     }
 
-    private val moviesObserver = Observer<List<Movie>> { movies ->
-        moviesAdapter.movies = movies
+    private val moviesObserver = Observer<List<Movie>?> { movies ->
+        movies?.run { moviesAdapter.movies = this } ?: showGenericError()
     }
 
     private fun initMoviesList() {

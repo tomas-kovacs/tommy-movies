@@ -13,10 +13,10 @@ import javax.inject.Inject
 @HiltViewModel
 class MoviesViewModel @Inject constructor(private val getMoviesUseCase: GetMoviesUseCase) : ViewModel() {
 
-    private val _moviesLiveData: MutableLiveData<List<Movie>> by lazy {
-        MutableLiveData<List<Movie>>()
+    private val _moviesLiveData: MutableLiveData<List<Movie>?> by lazy {
+        MutableLiveData<List<Movie>?>()
     }
-    val moviesLiveData: LiveData<List<Movie>> = _moviesLiveData
+    val moviesLiveData: LiveData<List<Movie>?> = _moviesLiveData
 
     fun getMovies(hasInternetConnection: Boolean) = viewModelScope.launch {
         _moviesLiveData.value = getMoviesUseCase(hasInternetConnection)
