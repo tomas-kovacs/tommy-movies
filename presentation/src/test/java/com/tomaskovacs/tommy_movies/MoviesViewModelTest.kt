@@ -2,6 +2,8 @@ package com.tomaskovacs.tommy_movies
 
 import com.tomaskovacs.tommy_movies.domain.entity.Movie
 import com.tomaskovacs.tommy_movies.domain.usecase.GetMoviesUseCase
+import com.tomaskovacs.tommy_movies.util.BaseViewModelTest
+import com.tomaskovacs.tommy_movies.util.testObserver
 import com.tomaskovacs.tommy_movies.viewmodel.MoviesViewModel
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -31,24 +33,39 @@ class MoviesViewModelTest : BaseViewModelTest() {
     @Test
     fun `get movies with internet connection`(): Unit = runBlocking {
         `when`(getMoviesUseCase(true)).thenReturn(moviesMockList)
-        viewModel.getMovies(true)
+
+        val testObserver = viewModel.moviesLiveData.testObserver {
+            viewModel.getMovies(true)
+        }
+
         verify(getMoviesUseCase).invoke(true)
-        assert(viewModel.moviesLiveData.value == moviesMockList)
+        assert(testObserver.observedValues.size == 1)
+        assert(testObserver.observedValues[0] == moviesMockList)
     }
 
     @Test
     fun `get movies without internet connection`(): Unit = runBlocking {
         `when`(getMoviesUseCase(false)).thenReturn(moviesMockList)
-        viewModel.getMovies(false)
+
+        val testObserver = viewModel.moviesLiveData.testObserver {
+            viewModel.getMovies(false)
+        }
+
         verify(getMoviesUseCase).invoke(false)
-        assert(viewModel.moviesLiveData.value == moviesMockList)
+        assert(testObserver.observedValues.size == 1)
+        assert(testObserver.observedValues[0] == moviesMockList)
     }
 
     @Test
     fun `get movies failure`(): Unit = runBlocking {
         `when`(getMoviesUseCase(true)).thenReturn(null)
-        viewModel.getMovies(true)
+
+        val testObserver = viewModel.moviesLiveData.testObserver {
+            viewModel.getMovies(true)
+        }
+
         verify(getMoviesUseCase).invoke(true)
-        assert(viewModel.moviesLiveData.value == null)
+        assert(testObserver.observedValues.size == 1)
+        assert(testObserver.observedValues[0] == null)
     }
 }

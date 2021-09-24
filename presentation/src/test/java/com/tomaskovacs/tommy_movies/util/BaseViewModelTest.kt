@@ -1,4 +1,4 @@
-package com.tomaskovacs.tommy_movies
+package com.tomaskovacs.tommy_movies.util
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import kotlinx.coroutines.Dispatchers
