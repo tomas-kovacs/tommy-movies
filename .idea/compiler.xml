@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
-      <module name="tommy-movies.data" target="1.8" />
-      <module name="tommy-movies.di" target="1.8" />
-      <module name="tommy-movies.presentation" target="1.8" />
+      <module name="tommy-movies.data" target="11" />
+      <module name="tommy-movies.di" target="11" />
+      <module name="tommy-movies.presentation" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
