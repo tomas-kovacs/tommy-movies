@@ -31,7 +31,7 @@ class MoviesViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `get movies with internet connection`(): Unit = runBlocking {
+    fun `get movies with internet connection`() = runBlocking {
         `when`(getMoviesUseCase(true)).thenReturn(moviesMockList)
 
         val testObserver = viewModel.moviesLiveData.testObserver {
@@ -44,7 +44,7 @@ class MoviesViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `get movies without internet connection`(): Unit = runBlocking {
+    fun `get movies without internet connection`() = runBlocking {
         `when`(getMoviesUseCase(false)).thenReturn(moviesMockList)
 
         val testObserver = viewModel.moviesLiveData.testObserver {
@@ -57,7 +57,7 @@ class MoviesViewModelTest : BaseViewModelTest() {
     }
 
     @Test
-    fun `get movies failure`(): Unit = runBlocking {
+    fun `get movies failure`() = runBlocking {
         `when`(getMoviesUseCase(true)).thenReturn(null)
 
         val testObserver = viewModel.moviesLiveData.testObserver {

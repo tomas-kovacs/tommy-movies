@@ -1,8 +1,7 @@
-package com.tomaskovacs.tommy_movies.di
+package com.tomaskovacs.tommy_movies.data.repository
 
 import com.tomaskovacs.tommy_movies.data.local.MoviesLocalDataSource
 import com.tomaskovacs.tommy_movies.data.remote.MoviesRemoteDataSource
-import com.tomaskovacs.tommy_movies.data.repository.MoviesRepositoryImpl
 import com.tomaskovacs.tommy_movies.domain.repository.MoviesRepository
 import dagger.Module
 import dagger.Provides

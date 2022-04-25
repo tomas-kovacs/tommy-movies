@@ -1,4 +1,4 @@
-package com.tomaskovacs.tommy_movies.di
+package com.tomaskovacs.tommy_movies.data.remote.di
 
 import com.tomaskovacs.tommy_movies.data.remote.MoviesApi
 import com.tomaskovacs.tommy_movies.data.remote.MoviesRemoteDataSource

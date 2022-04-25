@@ -1,4 +1,4 @@
-package com.tomaskovacs.tommy_movies.di
+package com.tomaskovacs.tommy_movies.data.local.di
 
 import android.content.Context
 import com.tomaskovacs.tommy_movies.data.local.AppDatabase
